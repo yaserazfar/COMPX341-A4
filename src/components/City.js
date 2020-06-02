@@ -5,7 +5,7 @@ function City(props) {
     const [validationError, setValidationError] = useState(null);
 
     const validate = (event) => {
-        const cityPattern = /^[a-zA-Z]+$/;
+        const cityPattern = /^[a-z A-Z]+$/;
 
         const valid = cityPattern.test(event.target.value);
         if (!valid) {
