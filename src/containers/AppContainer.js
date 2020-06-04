@@ -2,17 +2,16 @@ import React, { useState } from 'react';
 import fetch from 'isomorphic-unfetch'
 import ZipResponse from '../components/ZipResponse';
 import City from '../components/City';
+import Database from '../Database';
 
 function AppContainer(props) {
 
     const [responseData, setResponseData] = useState('');
-
-    
     const handleCityChange = async (cityValue) => {
 
         if (!(localStorage.getItem("city") === null)){
             cityValue = localStorage.getItem("city")
-            localStorage.clear()
+            localStorage.removeItem("city")
         }
 
         //console.log(`--------- fetchData called zip:${cityValue}`)
@@ -25,6 +24,14 @@ function AppContainer(props) {
     const clearResponse = () => {
         setResponseData('');
     }
+    
+    
+    Database()
+    if(typeof code_happened === 'undefined'){
+        window.code_happened = true;
+        handleCityChange()
+    }
+
 
     return (
         <div>
