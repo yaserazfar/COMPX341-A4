@@ -25,21 +25,33 @@ function Database() {
 
       var firestore = firebase.firestore();
       const docRef = firestore.collection("weatherDB").doc("cities");
+
+      window.onload = function(){
+          var map1 = document.getElementById("map");
     
-      docRef.set({
-          cityName: "Hamilton"
-      }).then(function() {
-          console.log("saved!");
-      }).catch(function(error) {
-          console.log("error: ",error);
-      });
+          map1.onclick = function() {
+              if (!(localStorage.getItem("city") === null)){
+                  docRef.set({
+                      cityName: localStorage.getItem("city")
+                  }).then(function() {
+                      docRef.set({
+                          cityName: localStorage.getItem("city")
+                      })
+                      console.log("saved!");
+                  }).catch(function(error) {
+                      console.log("error: ",error);
+                  });
+              }
+          }
+      }
+    
     
     
       docRef.get().then(function (doc) {
           if (doc && doc.exists) {
               const myData = doc.data().cityName;
-              console.log(myData);
-            //  AppContainer(myData);
+            //   console.log(myData);
+            //   AppContainer(myData);
             //   handleCityChange(myData);
                 localStorage.setItem('city',myData);
           }
