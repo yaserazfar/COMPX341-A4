@@ -5,7 +5,7 @@ function City(props) {
     const [validationError, setValidationError] = useState(null);
 
     const validate = (event) => {
-        const cityPattern = /^[a-z A-Z]+$/;
+        const cityPattern = /^[a-z A-Z]*$/;
 
         const valid = cityPattern.test(event.target.value);
         if (!valid) {
@@ -28,10 +28,10 @@ function City(props) {
                     `}
                     </style>
                     <input 
-                        type="text" 
+                        type="text"
                         className="form-control" 
                         id="usr" 
-                        placeholder="NZ City Name"
+                        placeholder="NZ city name or click then enter"
                         onKeyPress={(event) => {
                             if (event.key === "Enter") {
                                 validate(event);
