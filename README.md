@@ -10,3 +10,6 @@ This React application can return weather for New Zealand cities using two diffe
 The application uses two APIs:
 1. Google Maps API
 2. OpenWeatherMap API
+
+
+All API keys used in this project have been disabled.
